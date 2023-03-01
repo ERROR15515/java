@@ -1,0 +1,32 @@
+import java.util.Scanner;
+class Main
+{
+	public static void main(String[] args) 
+	{
+		int a, b = 0, sum = 0;
+		Scanner  in = new Scanner(System.in);
+		System.out.println("Введите длинну массива: ");
+		
+		a = in.nextInt();
+		int mas[] = new int[a];
+		System.out.println("Полученный массив: ");
+		
+		for (int j = 0; j < mas.length - 1; j++)
+		{
+		    mas[j] = ((int)(Math.random() * 21) - 10);
+		    System.out.println(mas[j] + ", ");
+		}
+		System.out.println(mas[a - 1] + " ");
+		
+		if (mas.length > 0)
+		{
+		    for (int j = 0; j < mas.length; j++)
+		    {
+		        sum += mas[j];
+		    }
+		    
+		    b = sum / mas.length;
+		    System.out.println("\nСреднее арифметическое чисел массива: \n" + b);
+		}
+	}
+}
