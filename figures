@@ -1,0 +1,119 @@
+class Main
+{
+    public static void main(String args[])
+    {
+        Rectangle P_1 = new Rectangle();
+        P_1.setD(12.2);
+        P_1.setE(16.5);
+        Rectangle P_2 = new Rectangle();
+        P_2.setD(32.4);
+        P_2.setE(26.5);
+
+        Triangle R_11 = new Triangle();
+        R_11.setA(12.2);
+        Triangle R_12 = new Triangle();
+        R_12.setB(16.5);
+        Triangle R_13 = new Triangle();
+        R_13.setC(6.1);
+        Triangle R_21 = new Triangle();
+        R_21.setA(22.22);
+        Triangle R_22 = new Triangle();
+        R_22.setB(19.5);
+        Triangle R_23 = new Triangle();
+        R_23.setC(36.1);
+
+        Calculations P_S = new Calculations();
+        System.out.println("Периметр 1-го прямоугольника: " + P_S.P_Rectangle(P_1));
+        System.out.println("Периметр 1-го прямоугольника: " + P_S.P_Rectangle(P_2));
+    }
+}
+
+
+class Rectangle
+{
+    private double d, e;
+    
+    public double getD()
+    {
+        return d;
+    }
+
+    public void setD(double d)
+    {
+        this.d = d;
+    }
+    public double getE()
+    {
+        return e;
+    }
+
+    public void setE(double e)
+    {
+        this.e = e;
+    }
+}
+
+
+class Triangle
+{
+    private double a, b, c;
+
+    public double getA()
+    {
+        return a;
+    }
+    public void setA(double a)
+    {
+        this.a = a;
+    }
+    public double getB()
+    {
+        return b;
+    }
+    public void setB(double b)
+    {
+        this.b = b;
+    }
+    public double getC()
+    {
+        return c;
+    }
+    public void setC(double c)
+    {
+        this.c = c;
+    }
+}
+
+class Calculations
+{
+    public double P_Rectangle(Rectangle side1)
+    {
+        double P = (side1.getD() + side1.getE()) * 2;
+        return P;
+    }
+    
+    public double P_Rectangle(Rectangle side2)
+    {
+        double P = (side2.getD() + side2.getE()) * 2;
+        return P;
+    }
+
+    public double P_Triangle(Triangle side_1, Triangle side_2, Triangle side_3)
+    {
+        double P = side_1.getA() + side_2.getB() + side_3.getC();
+        return P;
+    }
+    
+    public double S_Rectangle(Rectangle side1, Rectangle side2)
+    {
+        double S = side1.getD() * side2.getE();
+        return S;
+    }
+    
+    public double S_Triangle(Triangle side_1, Triangle side_2, Triangle side_3)
+    {
+        double p = (side_1.getA() + side_2.getB() + side_3.getC()) / 2;
+        double S = Math.sqrt((p * (p - side_1.getA())* (p - side_1.getB())* (p - side_1.getC())));
+        return S;
+    }
+}
