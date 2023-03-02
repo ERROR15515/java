@@ -1,0 +1,72 @@
+class Main {  
+  public static void main(String args[])
+  { 
+    Cat loriCat = new Cat();
+    loriCat.setName("Lori");
+    loriCat.setWeight(6);
+
+    Cat baxter = new Cat();
+    baxter.setName("Baxter");
+    baxter.setWeight(10);
+
+    FightClub fightClub = new FightClub();
+    System.out.println("Winner: " + fightClub.fight(loriCat, baxter));
+  } 
+}
+class Rectangle{
+    private double d, e;
+    
+
+    public double getD(){
+        return d;
+    }
+    
+    public void setD(double d){
+        this.d = d;
+    }
+    public double getE(){
+        return e;
+    }
+    
+    public void setE(double e){
+        this.e = e;
+    }
+}
+class Triangle{
+    private double a, b, c;
+
+    public double getA(){
+        return a;
+    }
+    public void setA(double a){
+        this.a = a;
+    }
+    public double getB(){
+        return b;
+    }
+    public void setB(double b){
+        this.b = b;
+    }
+    public double getC(){
+        return c;
+    }
+    public void setC(double c){
+        this.c = c;
+    }
+}
+class Calculations{
+    public String Calc(Cat firstCat, Cat secondCat)
+  {
+    
+    if (firstCat.getWeight() > secondCat.getWeight())
+    {
+      return firstCat.getName();
+        
+    }
+    else 
+    {
+      return secondCat.getName();
+    }
+    
+  }
+}
