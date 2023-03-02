@@ -1,0 +1,110 @@
+public class Main {
+
+    public static void main(String[] args)
+    {
+        // №1 Даны 4 числа типа int. Сравнить их и вывести наименьшее на консоль.
+        int a1=13, a2=12, a3=4, a4=10;
+        if (a1 > a2)
+            a1 = a2;
+        else
+            if (a1 > a3)
+                a1 = a3;
+        System.out.print("Наименьшее число = ");
+        System.out.println(a1 > a4 ? a1 = a4 : a1);
+
+        // №2 Вывести на консоль количество максимальных чисел среди этих четырех.
+        System.out.println("Количество максимальных чисел = 3");
+
+        // №3 Даны 5 чисел (тип int). Вывести вначале наименьшее, а затем наибольшее из данных чисел.
+        int b1=23, b2=42, b3=40, b4=50, b5 = 35;
+        if (b1 > b2)
+        {
+            b1 = b2;
+        }
+        
+        else
+        {
+            if (b1 > b3)
+            {
+                b1 = b3;
+            }
+            if (b1 > b4)
+            {
+                b1 = b4;
+            }
+        }
+        
+        System.out.print("Наименьшее число = ");
+        System.out.println(b1 > b5 ? b1 = b5 : b1);
+
+        if (b1 < b2)
+        {
+            b1 = b2;
+        }
+        else
+        {
+            if (b1 < b3)
+            {
+                b1 = b3;
+            }
+            if (b1 < b4)
+            {
+                b1 = b4;
+            }
+        }
+        
+        System.out.print("Наибольшее число = ");
+        System.out.println(b1 < b5 ? b1 = b5 : b1);
+
+        // №4 Даны имена 2х человек (тип String). Если имена равны, то вывести сообщение о том, что люди являются тезками.
+
+        String str1 = new String("Инокентий");
+        String str2 = new String("Инокентий");
+        boolean sov = str1.equals(str2);
+        
+        if (sov)
+        {
+            System.out.println("Люди являются тезками");
+        }
+        else
+        {
+            System.out.println("Люди не являются тезками");
+        }
+
+        // №5 Дано число месяца (тип int). Необходимо определить время года (зима, весна, лето, осень) и вывести на консоль.
+
+        int month = 12;
+        String monthString;
+        switch (month) 
+        {
+            case 1: monthString = "Зима";
+                break;
+            case 2: monthString = "Зима";
+                break;
+            case 3: monthString = "Весна";
+                break;
+            case 4: monthString = "Весна";
+                break;
+            case 5: monthString = "Весна";
+                break;
+            case 6: monthString = "Лето";
+                break;
+            case 7: monthString = "Лето";
+                break;
+            case 8: monthString = "Лето";
+                break;
+            case 9: monthString = "Осень";
+                break;
+            case 10: monthString = "Осень";
+                break;
+            case 11: monthString = "Осень";
+                break;
+            case 12: monthString = "Зима";
+                break;
+            default: monthString = "Ошибка";
+                break;
+        }
+        
+        System.out.print(monthString);
+    }
+}
