@@ -1,0 +1,84 @@
+public class Main
+{
+    public static int RandomNumber(int min, int max)
+    {
+        return (int)(Math.random()*((max-min)+1)+min);
+    }
+    public static void main(String[] args)
+    {
+        int[][] C = new int[3][3];
+        int[][] D = new int[3][3];
+        for (int i = 0; i < C.length; i++)
+        {
+            for (int j = 0; j < C[i].length; j++)
+            {
+                C[i][j] = RandomNumber(0, 99);
+            }
+        }
+        for (int i = 0; i < D.length; i++)
+        {
+            for (int j = 0; j < D[i].length; j++)
+            {
+                D[i][j] = RandomNumber(0, 99);
+            }
+        }
+        // Вывод
+        System.out.println("Матрица C:");
+        for (int[] i: C)
+        {
+            for (int j: i)
+            {
+                System.out.print(j + " ");
+            }
+            System.out.print("\n");
+        }
+        System.out.println("Матрица D:");
+        for (int[] i: D)
+        {
+            for (int j: i)
+            {
+                System.out.print(j + " ");
+            }
+            System.out.print("\n");
+        }
+        //Сложение
+        int[][] Sum = new int[3][3];
+        for (int i = 0; i < D.length; i++)
+        {
+            for (int j = 0; j < D[i].length; j++)
+            {
+                Sum[i][j] = C[i][j] + D[i][j];
+            }
+        }
+        System.out.println("Сложение матриц:");
+        for (int[] i: Sum)
+        {
+            for (int j: i)
+            {
+                System.out.print(j + " ");
+            }
+            System.out.print("\n");
+        }
+        //Умножение
+        int[][] Mul = new int[3][3];
+        int l = 0, k = 0;
+        for (int i = 0; i < D.length; i++)
+        {
+            for (int j = 0; j < D[i].length; j++)
+            {
+                Mul[i][j] = C[i][l] * D[k][j];
+                Mul[i][j] += C[i][l+1] * D[k+1][j];
+                Mul[i][j] += C[i][l+2] * D[k+2][j];
+            }
+        }
+        System.out.println("Умножение матриц:");
+        for (int[] i: Mul)
+        {
+            for (int j: i)
+            {
+                System.out.print(j + " ");
+            }
+            System.out.print("\n");
+        }
+    }
+}
