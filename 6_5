@@ -1,0 +1,52 @@
+public class Main
+{
+    public static int RandomNumber(int min, int max)
+    {
+        return (int)(Math.random()*((max-min)+1)+min);
+    }
+    public static void main(String[] args) {
+        int[][] H = new int[5][5];
+        for (int i = 0; i < H.length; i++)
+        {
+            for (int j = 0; j < H[i].length; j++)
+            {
+                H[i][j] = RandomNumber(-99, 99);
+            }
+        }
+        // Вывод
+        System.out.println("Матрица до сортировки:");
+        for (int[] i: H)
+        {
+            for (int j: i)
+            {
+                System.out.print(j + " ");
+            }
+            System.out.println();
+        }
+        //Сортировка
+        for (int i = 0; i < H.length; i++)
+        {
+            for (int r = 0; r < H[i].length; r++)
+            {
+                for (int j = 0; j < H[i].length-1; j++)
+                {
+                    if (H[i][j] > H[i][j+1])
+                    {
+                        int o = H[i][j];
+                        H[i][j] = H[i][j+1];
+                        H[i][j+1] = o;
+                    }
+                }
+            }
+        }
+        System.out.println("Матрица после сортировки:");
+        for (int[] i: H)
+        {
+            for (int j: i)
+            {
+                System.out.print(j + " ");
+            }
+            System.out.println();
+        }
+    }
+}
