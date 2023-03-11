@@ -1,0 +1,42 @@
+import java.util.Scanner;
+
+
+class Main
+{
+    public static void main (String args[])
+    {   
+        int a,
+        min = 0,
+        max = 0;
+        Scanner in = new Scanner(System.in);
+        System.out.println("Введит длинну массива: ");
+        a = in.nextInt();
+        int mas[] = new int[a];
+        
+        System.out.println("Полученный массив: ");
+        for (int j = 0; j < mas.length; j++)
+        {
+            mas[j] = ((int)(Math.random() * 21) - 10);
+            System.out.print(mas[j] + " ");
+        }
+            
+        min = max = mas[0];
+        for(int j = 0; j < a; j++)
+        {
+            if(mas[j] < min)
+            min = mas[j];
+            if (mas[j] > max)
+            max = mas[j];
+        };
+            
+        System.out.println("\nMin элемент-ты: ");
+            for (int j = 0; j < a; j++)
+            {
+                if(min == mas[j])
+                System.out.println(mas[j] + " ");
+            }
+            
+        // Вывод Max элементов
+        System.out.println("Max элемент-ты: \n" + max);
+    }
+}
