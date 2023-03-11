@@ -1,14 +1,17 @@
 import java.util.Scanner;
+
+
 class Main
 {
 	public static void main(String[] args) 
 	{
-		int a, b = 0, sum = 0;
-		Scanner  in = new Scanner(System.in);
+		int a; 
+		double b = 0, sum = 0;
+		Scanner in = new Scanner(System.in);
 		System.out.println("Введите длинну массива: ");
-		
 		a = in.nextInt();
 		int mas[] = new int[a];
+		
 		System.out.println("Полученный массив: ");
 		
 		for (int j = 0; j < mas.length - 1; j++)
