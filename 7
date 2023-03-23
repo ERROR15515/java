@@ -1,177 +1,180 @@
-/// НАДО РАЗОБРАТЬСЯ 
-
-
 // Необходимый для обоих классов класс и импорт
 import java.util.Scanner;
-class Singer
+
+
+class Team
 {
-    private String Performer;
-    private int Rating;
-    private int Albums;
-    public String getPerformer() {return Performer;}
-    public void setPerformer(String performer) {Performer = performer;}
-    public int getRating() {return Rating;}
-    public void setRating(int rating) {Rating = rating;}
-    public int getAlbums() {return Albums;}
-    public void setAlbums(int albums) {Albums = albums;}
+    private String TeamTag;
+    private String City;
+    private int LeaguePlace;
+    private int WinNum;
+    
+    public String getTeamTag() {return TeamTag;}
+    public void setTeamTag(String teamTag) {TeamTag = teamTag;}
+    public int getLeaguePlace() {return LeaguePlace;}
+    public void setLeaguePlace(int leaguePlace) {LeaguePlace = leaguePlace;}
+    public int getWinNum() {return WinNum;}
+    public void setWinNum(int winNum) {WinNum = winNum;}
+    public String getCity() {return City;}
+    public void setCity(String city) {City = city;}
 }
 
 // Решение без методов
-public class Without{
+class Without{
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Введите количество певцов => ");
+        System.out.print("Введите количество команд => ");
         int n = sc.nextInt();
         sc.nextLine();
-        Singer singer[] = new Singer[n];
-        System.out.println("Введите информацию о певцах: ");
-        for (int i = 0; i < singer.length; i++) {
-            singer[i] = new Singer();
-            System.out.print("Псевдоним "+(i+1)+"-ого исполнителя => ");
-            singer[i].setPerformer(sc.nextLine());
-            System.out.print("Рейтинг "+(i+1)+"-ого исполнителя => ");
-            singer[i].setRating(sc.nextInt());
-            System.out.print("Количество альбомов "+(i+1)+"-ого исполнителя => ");
+        team[] = new Team[n];
+        System.out.println("Введите информацию о командах: ");
+        for (int i = 0; i < team.length; i++) {
+            team[i] = new Team();
+            System.out.print("Название "+(i+1)+"-й команды => ");
+            team[i].setTeamTag(sc.nextLine());
+            System.out.print("Рейтинг "+(i+1)+"-й команды => ");
+            team[i].setLeaguePlace(sc.nextInt());
+            System.out.print("Количество побед "+(i+1)+"-й команды => ");
             singer[i].setAlbums(sc.nextInt());
             sc.nextLine();
         }
 
-        //
-        System.out.println("\nХарактеристики исполнителей:");
-        for (int i = 0; i < singer.length; i++)
+        
+        System.out.println("\nХарактеристики команд:");
+        for (int i = 0; i < team.length; i++)
         {
-            System.out.println("" + singer[i].getPerformer() + " \t" + singer[i].getRating() + " \t" + singer[i].getAlbums());
+            System.out.println("" + team[i].getTeamTag() + " \t" + team[i].getLeaguePlace() + " \t" + team[i].getWinNum());
         }
 
-        //
+        
         int nommax = 0;
-        double max = singer[nommax].getRating();
-        for (int i = 0; i < singer.length; i++)
-            if (singer[i].getRating() > max) {
-                max = singer[i].getRating();
+        double max = team[nommax].getLeaguePlace();
+        for (int i = 0; i < team.length; i++)
+            if (team[i].getLeaguePlace() > max) {
+                max = team[i].getLeaguePlace();
                 nommax = i;
             }
-        System.out.println("\nИсполнитель с максимальной популярностью:");
-        System.out.println("" + singer[nommax].getPerformer() + " \t" + singer[nommax].getRating() + " \t" + singer[nommax].getAlbums());
+        System.out.println("\nКоманда с лучшим рейтингом:");
+        System.out.println("" + team[nommax].getTeamTag() + " \t" + team[nommax].getTeamTag() + " \t" + team[nommax].getWinNum());
 
-        //
+        
         double s = 0;
-        for (int i = 0; i < singer.length; i++)
-            s += singer[i].getAlbums();
-        double sr = s / singer.length;
-        System.out.println("Средняя количество альбомов = " + sr);
-        System.out.println("\nИспонители, с количеством альбомов больше среднего:");
+        for (int i = 0; i < team.length; i++)
+            s += team[i].getWinNum();
+        double sr = s / team.length;
+        System.out.println("Среднее количество побед = " + sr);
+        System.out.println("\nКоманды с количеством побед выше среднего: ");
         double sred = sr;
         int kol = 0;
-        for (int i = 0; i < singer.length; i++)
+        for (int i = 0; i < team.length; i++)
         {
-            if (singer[i].getAlbums() > sred)
+            if (team[i].getWinNum() > sred)
                 ++kol;
         }
-        for (int i = 0; i < singer.length; i++)
-            if (singer[i].getAlbums() > sred) {
-                System.out.println("" + singer[i].getPerformer() + " \t" + singer[i].getRating() + " \t" + singer[i].getAlbums());
+        for (int i = 0; i < team.length; i++)
+            if (team[i].getWinNum() > sred) {
+                System.out.println("" + team[i].getTeamTag() + " \t" + team[i].getLeaguePlace() + " \t" + singer[i].getWinNum());
             }
 
         //
-        for (int i = 0; i < singer.length-1; i++)
-            for (int j = 0; j < singer.length-1; j++)
-                if(singer[j].getPerformer().compareTo(singer[j+1].getPerformer()) < 0)
+        for (int i = 0; i < team.length-1; i++)
+            for (int j = 0; j < team.length-1; j++)
+                if(team[j].getTeamTag().compareTo(team[j+1].getTeamTag()) < 0)
                 {
-                    Singer rab = singer[j];
-                    singer[j] = singer[j+1];
-                    singer[j+1] = rab;
+                    Team rab = team[j];
+                    team[j] = team[j+1];
+                    team[j+1] = rab;
                 }
-        System.out.println("\nОтсортированный список исполнителей в обратном алфавитном порядке:");
-        for (int i = 0; i < singer.length; i++)
+        System.out.println("\nОтсортированный список команд в обратном алфавитном порядке:");
+        for (int i = 0; i < team.length; i++)
         {
-            System.out.println("" + singer[i].getPerformer() + " \t" + singer[i].getRating() + " \t" + singer[i].getAlbums());
+            System.out.println("" + team[i].getTeamTag() + " \t" + team[i].getLeaguePlace() + " \t" + team[i].getWinNum());
         }
 
         //
-        System.out.println("\nПоиск Исполнителя \n Введите псевдоним исполнителя => ");
+        System.out.println("\nПоиск Команды \n Введите название команды => ");
         String sname = sc.nextLine();
         int o=-1;
-        for (int i = 0; i < singer.length; i++)
+        for (int i = 0; i < team.length; i++)
         {
-            if (sname.equals(singer[i].getPerformer()))
+            if (sname.equals(singer[i].getTeamTag()))
             {
                 o = i;
-                System.out.print("Рейтинг " + (i + 1) + "-ого исполнителя => ");
-                singer[i].setRating(sc.nextInt());
-                System.out.print("Количество альбомов " + (i + 1) + "-ого исполнителя => ");
-                singer[i].setAlbums(sc.nextInt());
+                System.out.print("Рейтинг " + (i + 1) + "-й команды => ");
+                team[i].setLeaguePlace(sc.nextInt());
+                System.out.print("Количество побед " + (i + 1) + "-й команды => ");
+                team[i].setWinNum(sc.nextInt());
             }
         }
         if (o != -1)
-        {System.out.println("" + singer[o].getPerformer() + " \t" + singer[o].getRating() + " \t" + singer[o].getAlbums());}
-        else System.out.println("Такого певца нет в списке!");
+        {System.out.println("" + team[o].getTeamTag() + " \t" + team[o].getLeaguePlace() + " \t" + team[o].getWinNum());}
+        else System.out.println("Такой команды нет в списке!");
     }
 }
 
 //Решение с методами
 public class Main{
-    public static Singer [] setSingerArr(int k){
+    public static Team [] setTeamArr(int k){
         Scanner sc = new Scanner(System.in);
-        Singer singer[] = new Singer[k];
-        System.out.println("Введите информацию о певцах: ");
-        for (int i = 0; i < singer.length; i++) {
-            singer[i] = new Singer();
-            System.out.print("Псевдоним "+(i+1)+"-ого исполнителя => ");
-            singer[i].setPerformer(sc.nextLine());
-            System.out.print("Рейтинг "+(i+1)+"-ого исполнителя => ");
-            singer[i].setRating(sc.nextInt());
-            System.out.print("Количество альбомов "+(i+1)+"-ого исполнителя => ");
-            singer[i].setAlbums(sc.nextInt());
+        Team team[] = new Team[k];
+        System.out.println("Введите информацию о командах: ");
+        for (int i = 0; i < team.length; i++) {
+            team[i] = new Team();
+            System.out.print("Название "+(i+1)+"-й команды => ");
+            team[i].setTeamTag(sc.nextLine());
+            System.out.print("Рейтинг "+(i+1)+"-й команды => ");
+            team[i].setLeaguePlace(sc.nextInt());
+            System.out.print("Количество побед "+(i+1)+"-й команды => ");
+            team[i].setWinNum(sc.nextInt());
             sc.nextLine();
         }
-        return singer;
+        return team;
     }
 
     public static void showArray(Singer[] cntr)
     {
         for (int i = 0; i < cntr.length; i++)
         {
-            System.out.println("" + cntr[i].getPerformer() + " \t" + cntr[i].getRating() + " \t" + cntr[i].getAlbums());
+            System.out.println("" + cntr[i].getTeamTag() + " \t" + cntr[i].getLeaguePlace() + " \t" + cntr[i].getWinNum());
         }
     }
-    public static void showSinger(Singer cntr)
+    public static void showTeam(Singer cntr)
     {
-        System.out.println("" + cntr.getPerformer() + " \t" + cntr.getRating() + " \t" + cntr.getAlbums());
+        System.out.println("" + cntr.getTeamTag() + " \t" + cntr.getLeaguePlace() + " \t" + cntr.getWinNum());
     }
 
     public static int NomMax(Singer []st){
         int nommax = 0;
-        double max = st[nommax].getRating();
+        double max = st[nommax].getLeaguePlace();
         for (int i = 0; i < st.length; i++)
-            if (st[i].getRating() > max) {
-                max = st[i].getRating();
+            if (st[i].getLeaguePlace() > max) {
+                max = st[i].getLeaguePlace();
                 nommax = i;
             }
         return nommax;
     }
 
-    public static double avgNumberOfAlbums(Singer[] cntr)
+    public static double avgNumberOfWins(Singer[] cntr)
     {
         double s = 0;
         for (int i = 0; i < cntr.length; i++)
-            s += cntr[i].getAlbums();
+            s += cntr[i].getWinNum();
         double sr = s / cntr.length;
         return sr;
     }
 
-    public static Singer[] Bigger(Singer cntr[]){
-        double sred = avgNumberOfAlbums(cntr);
+    public static Team[] Bigger(Team cntr[]){
+        double sred = avgNumberOfWins(cntr);
         int kol = 0;
         for (int i = 0; i < cntr.length; i++)
         {
-            if (cntr[i].getAlbums() > sred)
+            if (cntr[i].getWinNum() > sred)
                 ++kol;
         }
-        Singer[] MoreThanAvg = new Singer[kol];
+        Team[] MoreThanAvg = new Team[kol];
         int n=-1;
         for (int i = 0; i < cntr.length; i++)
-            if (cntr[i].getAlbums() > sred) {
+            if (cntr[i].getWinNum() > sred) {
                 MoreThanAvg[++n] = cntr[i];
             }
         return MoreThanAvg;
@@ -181,25 +184,25 @@ public class Main{
     {
         for (int i = 0; i < cntr.length-1; i++)
             for (int j = 0; j < cntr.length-1; j++)
-                if(cntr[j].getPerformer().compareTo(cntr[j+1].getPerformer()) < 0)
+                if(cntr[j].getTeamTag().compareTo(cntr[j+1].getTeamTag()) < 0)
                 {
-                    Singer rab = cntr[j];
+                    Team rab = cntr[j];
                     cntr[j] = cntr[j+1];
                     cntr[j+1] = rab;
                 }
     }
 
-    public static Singer findForName(Singer cntr[], String Performer){
+    public static Team findForName(Team cntr[], String TeamTag){
         int n=-1;
         for (int i = 0; i < cntr.length; i++)
-            if (Performer.equals(cntr[i].getPerformer()))
+            if (TeamTag.equals(cntr[i].getTeamTag()))
             {
                 n = i;
                 Scanner sc = new Scanner(System.in);
-                System.out.print("Рейтинг " + (i + 1) + "-ого исполнителя => ");
-                cntr[i].setRating(sc.nextInt());
-                System.out.print("Количество альбомов " + (i + 1) + "-ого исполнителя => ");
-                cntr[i].setAlbums(sc.nextInt());
+                System.out.print("Рейтинг " + (i + 1) + "-й команды => ");
+                cntr[i].setLeaguePlace(sc.nextInt());
+                System.out.print("Количество побед " + (i + 1) + "-й команды => ");
+                cntr[i].setWinNum(sc.nextInt());
             }
         if (n != -1)
             {return cntr[n];}
@@ -208,34 +211,34 @@ public class Main{
 
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        System.out.print("Введите количество певцов => ");
+        System.out.print("Введите количество команд => ");
         int n = sc.nextInt();
-        Singer singer[]= setSingerArr(n);
+        Team team[]= setTeamArr(n);
 
-        System.out.println("\nХарактеристики исполнителей:");
-        showArray(singer);
+        System.out.println("\nХарактеристики команд:");
+        showArray(team);
 
-        int nommax = NomMax(singer);
-        System.out.println("\nИсполнитель с максимальной популярностью:");
-        showSinger(singer[nommax]);
+        int nommax = NomMax(team);
+        System.out.println("\nКоманда с максимальным рейтингом:");
+        showTeam(team[nommax]);
 
-        System.out.println("Средняя количество альбомов = " + avgNumberOfAlbums(singer));
-        System.out.println("\nИспонители, с количеством альбомов больше среднего:");
-        Singer[] larger = Bigger(singer);
+        System.out.println("Среднее количество побед = " + avgNumberOfWins(singer));
+        System.out.println("\nКоманды, с количеством побед выше среднего:");
+        Team[] larger = Bigger(team);
         showArray(larger);
 
-        sortName(singer);
-        System.out.println("\nОтсортированный список исполнителей в обратном алфавитном порядке:");
+        sortName(team);
+        System.out.println("\nОтсортированный список команд в обратном алфавитном порядке:");
         showArray(singer);
 
-        System.out.println("\nПоиск Исполнителя \n Введите псевдоним исполнителя => ");
+        System.out.println("\nПоиск команды \n Введите название команды => ");
         sc.nextLine();
         String sname = sc.nextLine();
-        Singer sfind = findForName(singer, sname);
+        Team sfind = findForName(team, sname);
         if (sfind!=null) {
-            showSinger(sfind);
+            showTeam(sfind);
         } else {
-            System.out.println("Такого певца нет в списке!");
+            System.out.println("Такой команды нет в списке!");
         }
     }
 }
